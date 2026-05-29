@@ -1,0 +1,25 @@
+# Excluir del build context (la imagen NO debe llevar venv, parquets, notebooks…)
+**/venv/
+**/.venv/
+**/__pycache__/
+**/*.pyc
+**/.pytest_cache/
+**/.ruff_cache/
+**/.mypy_cache/
+**/.ipynb_checkpoints/
+
+# Datos pesados que NO se usan en runtime (los parquets son intermedios del notebook)
+backend/data/*.parquet
+backend/data/*.feather
+backend/logs/
+
+# Notebooks y frontend (el backend solo necesita frontend/public/data, copiado aparte)
+notebooks/
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+
+.git/
+*.log
+session.log
+.DS_Store

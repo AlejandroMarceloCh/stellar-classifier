@@ -1,0 +1,15 @@
+# Render Blueprint — backend FastAPI del Stellar Classifier.
+# En Render: New + → Blueprint → conectar este repo → aplica este archivo.
+services:
+  - type: web
+    name: stellar-classifier-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    region: oregon
+    healthCheckPath: /api/health
+    envVars:
+      # Orígenes extra permitidos por CORS (los *.vercel.app ya están por regex).
+      # Setear si usas un dominio propio; si no, dejar vacío.
+      - key: ALLOWED_ORIGINS
+        sync: false

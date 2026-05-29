@@ -1,0 +1,122 @@
+{
+  "timestamp": "2026-05-27T05:28:13.666668Z",
+  "dataset_shape": [
+    100000,
+    18
+  ],
+  "features": [
+    "alpha",
+    "delta",
+    "u",
+    "g",
+    "r",
+    "i",
+    "z",
+    "redshift"
+  ],
+  "target": "class",
+  "metadata_dropped": [
+    "obj_ID",
+    "run_ID",
+    "rerun_ID",
+    "cam_col",
+    "field_ID",
+    "spec_obj_ID",
+    "plate",
+    "MJD",
+    "fiber_ID"
+  ],
+  "class_counts": {
+    "GALAXY": 59445,
+    "STAR": 21594,
+    "QSO": 18961
+  },
+  "class_proportions": {
+    "GALAXY": 59.44,
+    "STAR": 21.59,
+    "QSO": 18.96
+  },
+  "nulls_total": 0,
+  "duplicates_total": 0,
+  "sentinel_rows_detected": 1,
+  "sentinel_per_band": {
+    "u": 1,
+    "g": 1,
+    "r": 0,
+    "i": 0,
+    "z": 1
+  },
+  "feature_ranges_raw": {
+    "alpha": {
+      "min": 0.0055278279239701,
+      "max": 359.999809770956
+    },
+    "delta": {
+      "min": -18.7853280771825,
+      "max": 83.00051858898
+    },
+    "u": {
+      "min": -9999.0,
+      "max": 32.78139
+    },
+    "g": {
+      "min": -9999.0,
+      "max": 31.60224
+    },
+    "r": {
+      "min": 9.82207,
+      "max": 29.57186
+    },
+    "i": {
+      "min": 9.469903,
+      "max": 32.14147
+    },
+    "z": {
+      "min": -9999.0,
+      "max": 29.38374
+    },
+    "redshift": {
+      "min": -0.009970667,
+      "max": 7.011245
+    }
+  },
+  "feature_ranges_clean": {
+    "alpha": {
+      "min": 0.0055278279239701,
+      "max": 359.999809770956
+    },
+    "delta": {
+      "min": -18.7853280771825,
+      "max": 83.00051858898
+    },
+    "u": {
+      "min": 10.99623,
+      "max": 32.78139
+    },
+    "g": {
+      "min": 10.4982,
+      "max": 31.60224
+    },
+    "r": {
+      "min": 9.82207,
+      "max": 29.57186
+    },
+    "i": {
+      "min": 9.469903,
+      "max": 32.14147
+    },
+    "z": {
+      "min": 9.612333,
+      "max": 29.38374
+    },
+    "redshift": {
+      "min": -0.009970667,
+      "max": 7.011245
+    }
+  },
+  "decisions": [
+    "Drop filas con -9999 en notebook 02 (preprocessing) \u2014 son centinelas SDSS, no datos reales.",
+    "Descartar 9 columnas metadata (IDs sin valor predictivo).",
+    "Usar feature_ranges_clean para validar inputs en producci\u00f3n (no feature_ranges_raw)."
+  ]
+}

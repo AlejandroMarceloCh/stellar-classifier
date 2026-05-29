@@ -1,0 +1,66 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+backend/venv/
+.venv/
+venv/
+ENV/
+env/
+.python-version
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Data y modelos (NO commitear datasets pesados)
+backend/data/*.csv
+backend/data/*.parquet
+backend/data/*.feather
+backend/data/raw/
+*.pkl
+!backend/models/.gitkeep
+# Excepciones: el backend los necesita en runtime para el deploy (Render)
+!backend/models/*.pkl
+!backend/data/star_classification.csv
+
+# Frontend
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/build/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+frontend/.env.production
+frontend/.env.development
+
+# macOS
+.DS_Store
+._*
+.AppleDouble
+.LSOverride
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+backend/logs/
+
+# Tests
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+.ruff_cache/
+
+# Sesión local (no compartir)
+session.log

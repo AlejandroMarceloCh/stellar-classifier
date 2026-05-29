@@ -1,0 +1,30 @@
+{
+  "timestamp": "2026-05-29T05:16:03.933112Z",
+  "dataset_sha256": "faefcad9b950309282024dd351289ee14ae30f65a7b2ef32c9fa442da9dbe585",
+  "random_state": 42,
+  "features": [
+    "alpha",
+    "delta",
+    "u",
+    "g",
+    "r",
+    "i",
+    "z",
+    "redshift"
+  ],
+  "winner": "RandomForest",
+  "baseline_accuracy": 0.59445,
+  "test_accuracy": 0.9804,
+  "cv_accuracy_mean": 0.9775122257641102,
+  "cv_accuracy_std": 0.00038162303565504656,
+  "feature_importance": {
+    "redshift": 0.6172162000392497,
+    "z": 0.08517026062469112,
+    "i": 0.0772116272502608,
+    "u": 0.07649709424865604,
+    "g": 0.06846427831534423,
+    "r": 0.045193216817835384,
+    "alpha": 0.015774763368721575,
+    "delta": 0.01447255933524121
+  }
+}

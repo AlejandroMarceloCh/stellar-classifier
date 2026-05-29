@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    background-color: #ffffff;
+    color: #171717; /* neutral-900 */
+    font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    margin: 0;
+    line-height: 1.55;
+    font-size: 14px;
+    background-color: #fafafa; /* neutral-50, sutil tinte sobre blanco */
+  }
+
+  ::selection {
+    background-color: rgba(11, 61, 145, 0.18); /* NASA blue */
+    color: #0B3D91;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #fafafa;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #d4d4d4;
+    border-radius: 6px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #a3a3a3;
+  }
+
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    height: 16px;
+  }
+  input[type="range"]::-webkit-slider-runnable-track {
+    height: 2px;
+    background: #e5e5e5;
+    border-radius: 1px;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    background: #0B3D91; /* NASA blue */
+    border-radius: 9999px;
+    margin-top: -6px;
+    cursor: pointer;
+    transition: transform 120ms;
+    box-shadow: 0 1px 3px rgba(11, 61, 145, 0.25);
+  }
+  input[type="range"]:hover::-webkit-slider-thumb {
+    transform: scale(1.12);
+  }
+  input[type="range"]::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    background: #0B3D91;
+    border-radius: 9999px;
+    border: 0;
+    cursor: pointer;
+  }
+  input[type="range"]::-moz-range-track {
+    height: 2px;
+    background: #e5e5e5;
+  }
+}
+
+@layer components {
+  /* Card — superficie blanca con borde sutil */
+  .card {
+    @apply bg-white border border-gray-200 rounded-lg shadow-soft;
+  }
+  .card-flat {
+    @apply bg-gray-50 border border-gray-200 rounded-lg;
+  }
+
+  /* Botón primario NASA blue */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-md bg-nasa-blue text-white text-[13px] font-medium transition-colors hover:bg-nasa-blue-light disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed shadow-soft;
+  }
+
+  /* Botón ghost / secundario */
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-md text-gray-600 text-[13px] transition-colors hover:bg-gray-100 hover:text-gray-900;
+  }
+
+  /* Input numérico estandarizado */
+  .input-num {
+    @apply w-full bg-white border border-gray-300 rounded-md px-3 py-2 font-mono text-[13px] text-gray-900 outline-none transition-colors focus:border-nasa-blue focus:ring-2 focus:ring-nasa-blue/15;
+  }
+  .input-num.input-error {
+    @apply border-danger focus:border-danger focus:ring-danger/20;
+  }
+
+  /* Label uppercase utility (KPIs, mini-cards) */
+  .label-uppercase {
+    @apply text-[10px] tracking-[0.14em] uppercase text-gray-500 font-semibold;
+  }
+
+  /* Section headers */
+  .section-h2 {
+    @apply text-[15px] font-semibold text-gray-900;
+  }
+  .section-sub {
+    @apply text-[12px] text-gray-500 mt-0.5;
+  }
+}
+
+/* Plotly modebar sobre el visor 3D oscuro */
+.js-plotly-plot .modebar {
+  background: transparent !important;
+}
+.js-plotly-plot .modebar-btn svg path {
+  fill: rgba(148, 163, 184, 0.7) !important;
+}
+.js-plotly-plot .modebar-btn:hover svg path {
+  fill: #e2e8f0 !important;
+}
+.js-plotly-plot .modebar-group {
+  background: transparent !important;
+}
+
+/* Slider de feature — track relleno hasta --pct con color de banda --track */
+input[type="range"].slider-range {
+  height: 18px;
+}
+input[type="range"].slider-range::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 9999px;
+  background: linear-gradient(
+    to right,
+    var(--track) 0%,
+    var(--track) var(--pct),
+    #e5e5e5 var(--pct),
+    #e5e5e5 100%
+  );
+}
+input[type="range"].slider-range::-webkit-slider-thumb {
+  margin-top: -5px;
+  width: 16px;
+  height: 16px;
+  background: #ffffff;
+  border: 2px solid var(--track);
+  border-radius: 9999px;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.18);
+}
+input[type="range"].slider-range:hover::-webkit-slider-thumb {
+  transform: scale(1.12);
+}
+input[type="range"].slider-range::-moz-range-track {
+  height: 6px;
+  border-radius: 9999px;
+  background: #e5e5e5;
+}
+input[type="range"].slider-range::-moz-range-progress {
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--track);
+}
+input[type="range"].slider-range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #ffffff;
+  border: 2px solid var(--track);
+  border-radius: 9999px;
+}

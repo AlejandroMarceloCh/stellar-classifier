@@ -1,0 +1,89 @@
+{
+  "version": "randomforest_v1_20260527",
+  "model_type": "RandomForest",
+  "model_class": "RandomForestClassifier",
+  "trained_at": "2026-05-27T16:03:12.415840Z",
+  "dataset_hash_sha256": "faefcad9b950309282024dd351289ee14ae30f65a7b2ef32c9fa442da9dbe585",
+  "dataset_rows": 99999,
+  "train_rows": 79999,
+  "test_rows": 20000,
+  "features": [
+    "alpha",
+    "delta",
+    "u",
+    "g",
+    "r",
+    "i",
+    "z",
+    "redshift"
+  ],
+  "classes": [
+    "GALAXY",
+    "STAR",
+    "QSO"
+  ],
+  "class_to_int": {
+    "GALAXY": 0,
+    "STAR": 1,
+    "QSO": 2
+  },
+  "hyperparameters": {
+    "bootstrap": true,
+    "ccp_alpha": 0.0,
+    "class_weight": null,
+    "criterion": "gini",
+    "max_depth": null,
+    "max_features": "sqrt",
+    "max_leaf_nodes": null,
+    "max_samples": null,
+    "min_impurity_decrease": 0.0,
+    "min_samples_leaf": 1,
+    "min_samples_split": 2,
+    "min_weight_fraction_leaf": 0.0,
+    "monotonic_cst": null,
+    "n_estimators": 100,
+    "n_jobs": -1,
+    "oob_score": false,
+    "random_state": 42,
+    "verbose": 0,
+    "warm_start": false
+  },
+  "metrics": {
+    "baseline_accuracy_majority": 0.59445,
+    "test_accuracy": 0.9804,
+    "test_f1_macro": 0.9771368396584187,
+    "cv_accuracy_mean": 0.9775122257641102,
+    "cv_accuracy_std": 0.00038162303565504656,
+    "margin_over_baseline_pts": 38.595,
+    "per_class": {
+      "GALAXY": {
+        "precision": 0.9791614570309244,
+        "recall": 0.9880561863907814,
+        "f1_score": 0.9835887130536716,
+        "support": 11889
+      },
+      "STAR": {
+        "precision": 0.9949320433079936,
+        "recall": 1.0,
+        "f1_score": 0.997459584295612,
+        "support": 4319
+      },
+      "QSO": {
+        "precision": 0.9672310212998362,
+        "recall": 0.9340717299578059,
+        "f1_score": 0.9503622216259726,
+        "support": 3792
+      }
+    }
+  },
+  "feature_importance": {
+    "alpha": 0.015774763368721575,
+    "delta": 0.01447255933524121,
+    "u": 0.07649709424865604,
+    "g": 0.06846427831534423,
+    "r": 0.045193216817835384,
+    "i": 0.0772116272502608,
+    "z": 0.08517026062469112,
+    "redshift": 0.6172162000392497
+  }
+}

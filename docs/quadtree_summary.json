@@ -1,0 +1,51 @@
+{
+  "timestamp": "2026-05-27T15:42:16.848167Z",
+  "parameters": {
+    "max_depth": 6,
+    "min_count": 100
+  },
+  "dataset": {
+    "rows_input": 99999,
+    "bounds": {
+      "alpha_min": 0.0,
+      "alpha_max": 360.0,
+      "delta_min": -18.7863280771825,
+      "delta_max": 83.00151858898
+    }
+  },
+  "output": {
+    "path": "frontend/public/data/quadtree.json",
+    "size_kb": 582.2
+  },
+  "tree": {
+    "total_nodes": 1973,
+    "leaves": 1480,
+    "internal": 493,
+    "empty_leaves": 66,
+    "max_depth_real": 6,
+    "nodes_per_depth": {
+      "0": 1,
+      "1": 4,
+      "2": 16,
+      "3": 60,
+      "4": 164,
+      "5": 460,
+      "6": 1268
+    },
+    "leaf_count_min": 0,
+    "leaf_count_max": 595,
+    "leaf_count_median": 55.0
+  },
+  "invariant_check": {
+    "sum_leaves_eq_rows": true,
+    "leaf_sum": 99999,
+    "dataset_rows": 99999
+  },
+  "decisions": [
+    "MAX_DEPTH=6, MIN_COUNT=100 para mantener JSON manejable (<5MB).",
+    "Bounds: alpha=[0,360], delta=[dataset.min(), dataset.max()] (SDSS17 no cubre cielo sur completo).",
+    "Quadtree construido sobre dataset limpio (99,999 filas, sin centinela -9999).",
+    "Subdivisi\u00f3n: 4 cuadrantes por nodo, balanceado geom\u00e9tricamente (no por densidad).",
+    "Hojas vac\u00edas se mantienen para que el frontend pueda dibujar el grid completo."
+  ]
+}

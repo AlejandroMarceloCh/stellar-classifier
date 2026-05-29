@@ -1,0 +1,166 @@
+{
+  "timestamp": "2026-05-27T16:03:12.421900Z",
+  "random_state": 42,
+  "cv_folds": 5,
+  "baseline": {
+    "strategy": "most_frequent",
+    "accuracy": 0.59445
+  },
+  "winner": {
+    "name": "RandomForest",
+    "test_accuracy": 0.9804,
+    "test_f1_macro": 0.9771368396584187,
+    "cv_accuracy_mean": 0.9775122257641102,
+    "cv_accuracy_std": 0.00038162303565504656,
+    "margin_over_baseline_pts": 38.595
+  },
+  "all_models": [
+    {
+      "model": "Bagging",
+      "cv_accuracy_mean": 0.977612226545409,
+      "cv_accuracy_std": 0.0004664038037515984,
+      "test_accuracy": 0.9805,
+      "test_f1_macro": 0.9772590457633076,
+      "time_seconds": 24.22136902809143
+    },
+    {
+      "model": "RandomForest",
+      "cv_accuracy_mean": 0.9775122257641102,
+      "cv_accuracy_std": 0.00038162303565504656,
+      "test_accuracy": 0.9804,
+      "test_f1_macro": 0.9771368396584187,
+      "time_seconds": 10.775130033493042
+    },
+    {
+      "model": "GradientBoosting",
+      "cv_accuracy_mean": 0.974987190605663,
+      "cv_accuracy_std": 0.0007888839907568241,
+      "test_accuracy": 0.97735,
+      "test_f1_macro": 0.9734460340001384,
+      "time_seconds": 101.20754933357239
+    },
+    {
+      "model": "ExtraTrees",
+      "cv_accuracy_mean": 0.9719996570098131,
+      "cv_accuracy_std": 0.001222032980982428,
+      "test_accuracy": 0.9748,
+      "test_f1_macro": 0.9710735578225954,
+      "time_seconds": 2.389831066131592
+    },
+    {
+      "model": "DecisionTree",
+      "cv_accuracy_mean": 0.9642495484092756,
+      "cv_accuracy_std": 0.0004860833352214798,
+      "test_accuracy": 0.9666,
+      "test_f1_macro": 0.9615843814407317,
+      "time_seconds": 2.810804843902588
+    },
+    {
+      "model": "LogisticRegression",
+      "cv_accuracy_mean": 0.9556369421526345,
+      "cv_accuracy_std": 0.0016122520319855657,
+      "test_accuracy": 0.9579,
+      "test_f1_macro": 0.9516201870695776,
+      "time_seconds": 4.180775880813599
+    },
+    {
+      "model": "AdaBoost",
+      "cv_accuracy_mean": 0.9101485124070253,
+      "cv_accuracy_std": 0.020962843271420714,
+      "test_accuracy": 0.9434,
+      "test_f1_macro": 0.9341967613084426,
+      "time_seconds": 6.927402019500732
+    },
+    {
+      "model": "LinearSVC",
+      "cv_accuracy_mean": 0.9377242265141572,
+      "cv_accuracy_std": 0.00074288868913659,
+      "test_accuracy": 0.94115,
+      "test_f1_macro": 0.9342276647947139,
+      "time_seconds": 1.4299557209014893
+    },
+    {
+      "model": "KNN",
+      "cv_accuracy_mean": 0.9356491960435027,
+      "cv_accuracy_std": 0.0019355082765637793,
+      "test_accuracy": 0.9394,
+      "test_f1_macro": 0.9329860260506893,
+      "time_seconds": 1.1931610107421875
+    },
+    {
+      "model": "GaussianNB",
+      "cv_accuracy_mean": 0.9215865366585412,
+      "cv_accuracy_std": 0.002010883559574831,
+      "test_accuracy": 0.9246,
+      "test_f1_macro": 0.9162577046959154,
+      "time_seconds": 1.075524091720581
+    }
+  ],
+  "classification_report": {
+    "GALAXY": {
+      "precision": 0.9791614570309244,
+      "recall": 0.9880561863907814,
+      "f1-score": 0.9835887130536716,
+      "support": 11889.0
+    },
+    "STAR": {
+      "precision": 0.9949320433079936,
+      "recall": 1.0,
+      "f1-score": 0.997459584295612,
+      "support": 4319.0
+    },
+    "QSO": {
+      "precision": 0.9672310212998362,
+      "recall": 0.9340717299578059,
+      "f1-score": 0.9503622216259726,
+      "support": 3792.0
+    },
+    "accuracy": 0.9804,
+    "macro avg": {
+      "precision": 0.9804415072129181,
+      "recall": 0.9740426387828623,
+      "f1-score": 0.9771368396584187,
+      "support": 20000.0
+    },
+    "weighted avg": {
+      "precision": 0.980305104522843,
+      "recall": 0.9804,
+      "f1-score": 0.980284384923677,
+      "support": 20000.0
+    }
+  },
+  "confusion_matrix": [
+    [
+      11747,
+      22,
+      120
+    ],
+    [
+      0,
+      4319,
+      0
+    ],
+    [
+      250,
+      0,
+      3542
+    ]
+  ],
+  "feature_ablation_rf": {
+    "accuracy_redshift_only": 0.9238,
+    "accuracy_all_features": 0.9804,
+    "diff_pts": 5.660000000000009
+  },
+  "artifacts": {
+    "model": "backend/models/model.pkl",
+    "metadata": "backend/models/model_metadata.json"
+  },
+  "decisions": [
+    "Modelo ganador: RandomForest (test acc=0.9804).",
+    "Baseline trivial: 0.5945 \u2014 ganador lo supera por 38.59pts (target DoD: \u226525).",
+    "CV con StratifiedKFold(5, shuffle=True, random_state=42).",
+    "LinearSVC en lugar de SVC RBF (90% performance, 1% del tiempo de entrenamiento).",
+    "Feature ablation: solo redshift = 0.924; todas las features = 0.980.",
+    "Joblib > pickle (Slide 56-57 U4_T2 \u2014 modelo con 38621.4KB de NumPy arrays)."
+  ]
+}

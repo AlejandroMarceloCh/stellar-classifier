@@ -1,0 +1,66 @@
+{
+  "timestamp": "2026-05-27T16:11:21.621551Z",
+  "parameters": {
+    "sample_size": 10000,
+    "max_depth": 5,
+    "min_count": 50,
+    "random_state": 42
+  },
+  "sample": {
+    "rows": 10000,
+    "stratified": true,
+    "proportions": {
+      "GALAXY": 0.5945,
+      "STAR": 0.2159,
+      "QSO": 0.1896
+    }
+  },
+  "raw_ranges": {
+    "alpha": {
+      "min": 0.0357736532100716,
+      "max": 359.899045806994
+    },
+    "delta": {
+      "min": -17.4339461952334,
+      "max": 82.5675002940135
+    },
+    "redshift": {
+      "min": -0.003844469,
+      "max": 7.008322
+    }
+  },
+  "tree": {
+    "total_nodes": 873,
+    "leaves": 764,
+    "internal": 109,
+    "empty_leaves": 76,
+    "max_depth_real": 5,
+    "nodes_per_depth": {
+      "0": 1,
+      "1": 8,
+      "2": 32,
+      "3": 168,
+      "4": 296,
+      "5": 368
+    }
+  },
+  "invariant_check": {
+    "sum_leaves_eq_sample": true,
+    "leaf_sum": 10000,
+    "sample_size": 10000
+  },
+  "output": {
+    "octree_path": "frontend/public/data/octree.json",
+    "octree_size_kb": 419.68,
+    "sample_path": "frontend/public/data/sample_points.json",
+    "sample_size_kb": 614.88
+  },
+  "decisions": [
+    "Sample estratificado de 10,000 puntos (preserva proporciones del dataset).",
+    "Octree construido sobre coordenadas NORMALIZADAS [0,1] (cube uniforme).",
+    "Cada nodo expone bounds_norm (subdivisi\u00f3n) Y bounds_raw (renderizado frontend).",
+    "MAX_DEPTH=5, MIN_COUNT=50 \u2192 JSON ~420KB (target <2MB).",
+    "sample_points.json usa arrays paralelos (compacto, ~60% m\u00e1s chico que objetos JSON).",
+    "cKDTree para k-NN productivo NO se serializa \u2014 se reconstruye en backend lifespan (<1s)."
+  ]
+}

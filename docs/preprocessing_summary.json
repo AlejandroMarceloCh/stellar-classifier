@@ -1,0 +1,75 @@
+{
+  "timestamp": "2026-05-27T15:21:58.283137Z",
+  "dataset_input": {
+    "path": "backend/data/star_classification.csv",
+    "sha256": "faefcad9b950309282024dd351289ee14ae30f65a7b2ef32c9fa442da9dbe585",
+    "rows_initial": 100000
+  },
+  "cleaning": {
+    "sentinel_rows_dropped": 1,
+    "metadata_columns_dropped": [
+      "obj_ID",
+      "run_ID",
+      "rerun_ID",
+      "cam_col",
+      "field_ID",
+      "spec_obj_ID",
+      "plate",
+      "MJD",
+      "fiber_ID"
+    ],
+    "rows_after_cleaning": 99999
+  },
+  "encoding": {
+    "strategy": "manual_dict",
+    "class_to_int": {
+      "GALAXY": 0,
+      "STAR": 1,
+      "QSO": 2
+    }
+  },
+  "split": {
+    "test_size": 0.2,
+    "random_state": 42,
+    "stratify": true,
+    "train_rows": 79999,
+    "test_rows": 20000,
+    "train_class_proportions": {
+      "GALAXY": 0.5944574307178839,
+      "STAR": 0.2159276990962387,
+      "QSO": 0.18961487018587733
+    },
+    "test_class_proportions": {
+      "GALAXY": 0.59445,
+      "STAR": 0.21595,
+      "QSO": 0.1896
+    }
+  },
+  "scaling": {
+    "scaler": "StandardScaler",
+    "fit_on": "X_train only",
+    "train_mean_max_abs": 6.531745745296537e-16,
+    "train_std_min": 1.0000062501367217,
+    "train_std_max": 1.000006250136722,
+    "test_mean_max_abs": 0.013595213579952766
+  },
+  "artifacts": {
+    "scaler": "backend/models/scaler.pkl",
+    "encoder": "backend/models/label_encoder.pkl",
+    "train_ranges": "backend/models/train_ranges.json",
+    "X_train_scaled": "backend/data/X_train_scaled.parquet",
+    "X_test_scaled": "backend/data/X_test_scaled.parquet",
+    "X_train_raw": "backend/data/X_train_raw.parquet",
+    "X_test_raw": "backend/data/X_test_raw.parquet",
+    "y_train": "backend/data/y_train.parquet",
+    "y_test": "backend/data/y_test.parquet"
+  },
+  "decisions": [
+    "Drop 1 fila con valor centinela -9999 (detectado en notebook 01, clase STAR).",
+    "Descartar 9 columnas metadata (IDs internos del SDSS \u2014 sin valor predictivo, riesgo de leakage).",
+    "Encoding manual estilo profe: {GALAXY: 0, STAR: 1, QSO: 2}.",
+    "Train/test split 80/20 con stratify=y, random_state=42.",
+    "StandardScaler \u00fanico (sin doble escalado del notebook base). Ajustado SOLO en train.",
+    "train_ranges.json guarda rangos de features ORIGINALES (no escaladas) para validar inputs en /api/predict."
+  ]
+}

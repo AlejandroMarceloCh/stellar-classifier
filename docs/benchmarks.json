@@ -1,0 +1,128 @@
+{
+  "timestamp": "2026-05-27T16:15:29.871724+00:00",
+  "host": "TestClient (in-process, no network)",
+  "endpoints": {
+    "/api/predict": {
+      "endpoint": "/api/predict",
+      "method": "POST",
+      "n_runs": 100,
+      "warmup_runs": 10,
+      "latency_ms": {
+        "p50": 30.522271001245826,
+        "p95": 32.0244829839794,
+        "p99": 62.95079791918404,
+        "mean": 31.146415872499347,
+        "min": 26.956125017022714,
+        "max": 76.93929199012928
+      },
+      "response_size_bytes": {
+        "mean": 132,
+        "min": 129,
+        "max": 136
+      }
+    },
+    "/api/neighbors": {
+      "endpoint": "/api/neighbors",
+      "method": "POST",
+      "n_runs": 100,
+      "warmup_runs": 10,
+      "latency_ms": {
+        "p50": 1.165791487437673,
+        "p95": 1.4221520439605226,
+        "p99": 1.5760999225312846,
+        "mean": 1.2036425495170988,
+        "min": 1.0971669980790466,
+        "max": 1.631333987461403
+      },
+      "response_size_bytes": {
+        "mean": 887,
+        "min": 861,
+        "max": 918
+      }
+    },
+    "/api/quadtree": {
+      "endpoint": "/api/quadtree",
+      "method": "GET",
+      "n_runs": 100,
+      "warmup_runs": 10,
+      "latency_ms": {
+        "p50": 10.27085400710348,
+        "p95": 12.38009193039028,
+        "p99": 32.739185329410255,
+        "mean": 11.493087110575289,
+        "min": 9.89870898774825,
+        "max": 33.69387501152232
+      },
+      "response_size_bytes": {
+        "mean": 540200,
+        "min": 540200,
+        "max": 540200
+      }
+    },
+    "/api/octree": {
+      "endpoint": "/api/octree",
+      "method": "GET",
+      "n_runs": 100,
+      "warmup_runs": 10,
+      "latency_ms": {
+        "p50": 8.323228990775533,
+        "p95": 8.92905560467625,
+        "p99": 30.360605009482246,
+        "mean": 8.790797549008857,
+        "min": 7.924667006591335,
+        "max": 30.729874997632578
+      },
+      "response_size_bytes": {
+        "mean": 392032,
+        "min": 392032,
+        "max": 392032
+      }
+    },
+    "/api/sample-points": {
+      "endpoint": "/api/sample-points",
+      "method": "GET",
+      "n_runs": 100,
+      "warmup_runs": 10,
+      "latency_ms": {
+        "p50": 9.11391650151927,
+        "p95": 9.656141643063165,
+        "p99": 9.901952487998642,
+        "mean": 9.164124969684053,
+        "min": 8.794041990768164,
+        "max": 9.934375004377216
+      },
+      "response_size_bytes": {
+        "mean": 579612,
+        "min": 579612,
+        "max": 579612
+      }
+    },
+    "/api/health": {
+      "endpoint": "/api/health",
+      "method": "GET",
+      "n_runs": 100,
+      "warmup_runs": 10,
+      "latency_ms": {
+        "p50": 0.7287705084308982,
+        "p95": 0.874010458937846,
+        "p99": 1.018478805781343,
+        "mean": 0.7420691911829636,
+        "min": 0.6724580016452819,
+        "max": 1.1814160097856075
+      },
+      "response_size_bytes": {
+        "mean": 35,
+        "min": 35,
+        "max": 35
+      }
+    }
+  },
+  "targets_ms": {
+    "/api/predict p95": 200,
+    "/api/neighbors p95": 150,
+    "/api/quadtree p95": 500,
+    "/api/octree p95": 500,
+    "/api/sample-points p95": 500,
+    "/api/health p95": 50
+  }
+}

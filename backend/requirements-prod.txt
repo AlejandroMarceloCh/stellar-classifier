@@ -1,0 +1,10 @@
+# Dependencias de runtime para servir la API (sin jupyter/matplotlib/dev).
+# scikit-learn DEBE coincidir con la versión que serializó el model.pkl (1.7.2).
+fastapi==0.115.0
+uvicorn[standard]==0.32.0
+pydantic==2.9.2
+pandas==2.3.3
+numpy==2.2.6
+scipy==1.14.1
+scikit-learn==1.7.2
+joblib==1.4.2
