@@ -61,7 +61,9 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# CORS: localhost para dev + orígenes extra por env (Render) + cualquier deploy de Vercel.
+# CORS: localhost para dev + orígenes extra por env (Render) + deploys de Vercel.
+# Regex acotado a un solo segmento de subdominio (no matches arbitrarios).
+# allow_credentials=False porque el cliente no envía cookies/credenciales.
 _default_origins = [
     "http://localhost:3000", "http://127.0.0.1:3000",
     "http://localhost:3223", "http://127.0.0.1:3223",
@@ -70,11 +72,20 @@ _env_origins = [o.strip() for o in os.environ.get("ALLOWED_ORIGINS", "").split("
 app.add_middleware(
     CORSMiddleware,
     allow_origins=_default_origins + _env_origins,
-    allow_origin_regex=r"https://.*\.vercel\.app",
-    allow_credentials=True,
+    allow_origin_regex=r"^https://[a-z0-9-]+\.vercel\.app$",
+    allow_credentials=False,
     allow_methods=["GET", "POST"],
     allow_headers=["*"],
 )
+
+
+# ---------- Security headers (higiene HTTP básica) ----------
+@app.middleware("http")
+async def security_headers(request: Request, call_next):
+    response = await call_next(request)
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["Referrer-Policy"] = "no-referrer"
+    return response
 
 
 # ---------- Request logging middleware ----------

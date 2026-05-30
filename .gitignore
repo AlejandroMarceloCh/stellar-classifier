@@ -22,8 +22,11 @@ backend/data/*.feather
 backend/data/raw/
 *.pkl
 !backend/models/.gitkeep
-# Excepciones: el backend los necesita en runtime para el deploy (Render)
-!backend/models/*.pkl
+# Excepciones: SOLO los 3 artefactos que el backend lee en runtime + el dataset
+# (pipeline.pkl bonus queda fuera; se regenera al correr el notebook localmente)
+!backend/models/model.pkl
+!backend/models/scaler.pkl
+!backend/models/label_encoder.pkl
 !backend/data/star_classification.csv
 
 # Frontend

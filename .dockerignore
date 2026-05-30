@@ -13,11 +13,16 @@ backend/data/*.parquet
 backend/data/*.feather
 backend/logs/
 
-# Notebooks y frontend (el backend solo necesita frontend/public/data, copiado aparte)
+# Notebooks (no entran al backend)
 notebooks/
-frontend/node_modules/
-frontend/.next/
-frontend/out/
+
+# Frontend: el backend SOLO necesita frontend/public/data; excluir todo lo demas
+# (reduce build context, evita filtrar .env*, build artifacts, source)
+frontend/**
+!frontend/public/
+!frontend/public/data/
+!frontend/public/data/**
+frontend/.env*
 
 .git/
 *.log
