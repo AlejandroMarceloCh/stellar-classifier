@@ -220,6 +220,34 @@ export interface ModelingSummary {
   decisions: string[];
 }
 
+export interface GameObject {
+  obj_id: string;
+  alpha: number;
+  delta: number;
+  u: number;
+  g: number;
+  r: number;
+  i: number;
+  z: number;
+  redshift: number;
+  true_class: StellarClass;
+}
+
+export interface GameObjectsPayload {
+  metadata: {
+    generated_at: string;
+    source: string;
+    note: string;
+    random_state: number;
+    test_size: number;
+    per_class: number;
+    count: number;
+    features: string[];
+  };
+  class_distribution: Record<StellarClass, number>;
+  objects: GameObject[];
+}
+
 export interface DemoObject {
   obj_id: string;
   alpha: number;

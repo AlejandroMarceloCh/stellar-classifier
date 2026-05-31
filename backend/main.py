@@ -13,7 +13,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from .ml.inference import InferenceService, ModelNotLoadedError
 from .ml.neighbors_service import NeighborsService
-from .routes import health, metadata, neighbors, octree, predict, quadtree
+from .routes import game, health, metadata, neighbors, octree, predict, quadtree
 
 # ---------- Logging ----------
 logging.basicConfig(
@@ -108,6 +108,7 @@ app.include_router(quadtree.router, tags=["quadtree"])
 app.include_router(octree.router, tags=["octree"])
 app.include_router(neighbors.router, tags=["neighbors"])
 app.include_router(metadata.router, tags=["metadata"])
+app.include_router(game.router, tags=["game"])
 
 
 @app.get("/", tags=["root"])

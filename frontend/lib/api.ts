@@ -3,6 +3,7 @@ import type {
   ApiError,
   DemoObject,
   FeatureRanges,
+  GameObjectsPayload,
   ModelMetadata,
   ModelingSummary,
   NeighborsRequest,
@@ -63,4 +64,5 @@ export const api = {
   octree: () => request<OctreePayload>("/api/octree"),
   samplePoints: () => request<SamplePointsPayload>("/api/sample-points"),
   modelingSummary: () => request<ModelingSummary>("/api/modeling-summary"),
+  gameObjects: () => request<GameObjectsPayload>("/api/game-objects"),
 };

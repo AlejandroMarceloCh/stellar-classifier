@@ -10,6 +10,7 @@ import type {
   PredictResponse,
   StellarClass,
 } from "@/lib/types";
+import Link from "next/link";
 import { DemoChips } from "@/components/DemoChips";
 import { PredictionForm } from "@/components/PredictionForm";
 import { ResultCard } from "@/components/ResultCard";
@@ -173,6 +174,35 @@ export default function HomePage() {
           { label: "Entiende el modelo", href: "/analysis" },
         ]}
       />
+
+      {/* CTA al juego /explore — la experiencia central */}
+      <Link
+        href="/explore"
+        className="group relative block overflow-hidden rounded-xl border border-nasa-blue/25 shadow-elev transition-transform hover:-translate-y-0.5"
+        style={{ background: "radial-gradient(ellipse at 78% 25%, #131c33 0%, #0a0f1e 55%, #05070d 100%)" }}
+      >
+        <div className="relative flex flex-col gap-4 p-6 sm:flex-row sm:items-center sm:justify-between sm:p-7">
+          <div className="max-w-xl space-y-2">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.14em] text-[#39D3C3]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#39D3C3]" aria-hidden /> Nuevo · juego interactivo
+            </span>
+            <h2 className="text-[20px] font-semibold text-white sm:text-[22px]">Entra al mapa del cielo</h2>
+            <p className="text-[13.5px] leading-relaxed text-slate-300">
+              Viaja entre 10 000 objetos reales del SDSS17, encuentra una luz sin clasificar y adivina
+              si es estrella, galaxia o quásar. El modelo predice en vivo —sobre datos que nunca
+              entrenó— y luego te muestra, en 3D, por qué la distancia lo decide casi todo.
+            </p>
+          </div>
+          <span className="inline-flex shrink-0 items-center gap-2 self-start rounded-full bg-[#39D3C3] px-5 py-2.5 text-[13px] font-semibold text-[#05070d] transition-transform group-hover:scale-[1.03] sm:self-auto">
+            Entrar al viaje →
+          </span>
+        </div>
+      </Link>
+
+      <p className="-mt-3 text-[12px] text-gray-500">
+        ¿Eres docente o quieres ver el modelo por dentro? Sigue abajo: clasificador, mapa del cielo,
+        universo 3D y métricas.
+      </p>
 
       {/* WORKSPACE — el clasificador es el protagonista */}
       <section className="space-y-5">

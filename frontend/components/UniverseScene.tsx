@@ -24,6 +24,16 @@ const CLASS_LABEL: Record<StellarClass, string> = {
   QSO: "Quásar",
 };
 
+// Objeto revelado del juego /explore: se resalta con su CLASE REAL y una plomada
+// vertical de su redshift al plano z=0 (el clímax que explica el modelo).
+export interface RevealObject {
+  obj_id: string;
+  alpha: number;
+  delta: number;
+  redshift: number;
+  true_class: StellarClass;
+}
+
 interface UniverseSceneProps {
   octree: OctreePayload;
   sample: SamplePointsPayload;
@@ -32,6 +42,7 @@ interface UniverseSceneProps {
   showWireframe: boolean;
   octreeMaxDepth: number;
   prediction: StoredPrediction | null;
+  revealObject?: RevealObject | null;
   plotly: PlotlyModule;
 }
 
@@ -59,6 +70,7 @@ export function UniverseScene({
   showWireframe,
   octreeMaxDepth,
   prediction,
+  revealObject = null,
   plotly,
 }: UniverseSceneProps) {
   const plotRef = useRef<HTMLDivElement>(null);
@@ -181,6 +193,38 @@ export function UniverseScene({
       });
     }
 
+    if (revealObject) {
+      const px = normalize(octree, "alpha", revealObject.alpha);
+      const py = normalize(octree, "delta", revealObject.delta);
+      const pz = normalize(octree, "redshift", revealObject.redshift);
+      const c = CLASS_COLOR_BRIGHT[revealObject.true_class];
+      // Plomada: del objeto al plano z=0, para leer su profundidad (= redshift).
+      traces.push({
+        type: "scatter3d",
+        mode: "lines",
+        x: [px, px],
+        y: [py, py],
+        z: [0, pz],
+        line: { color: c, width: 3, dash: "dot" },
+        hoverinfo: "skip",
+        showlegend: false,
+      });
+      traces.push({
+        type: "scatter3d",
+        mode: "markers",
+        name: "Objeto",
+        x: [px],
+        y: [py],
+        z: [pz],
+        marker: { size: 13, color: c, line: { color: "#ffffff", width: 2.5 }, symbol: "diamond" },
+        hovertemplate:
+          `<b>${CLASS_LABEL[revealObject.true_class]}</b><br>` +
+          `α ${revealObject.alpha.toFixed(2)}°  ·  δ ${revealObject.delta.toFixed(2)}°<br>` +
+          `redshift ${revealObject.redshift.toFixed(4)}<extra></extra>`,
+        showlegend: false,
+      });
+    }
+
     // El visor 3D es un panel oscuro (el cosmos es negro) embebido en la app clara.
     const axisCommon = {
       gridcolor: "rgba(148, 163, 184, 0.14)",
@@ -231,7 +275,7 @@ export function UniverseScene({
     };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [pointBuckets, wireframeSegments, enabledClasses, showPoints, prediction, octree, plotly]);
+  }, [pointBuckets, wireframeSegments, enabledClasses, showPoints, prediction, revealObject, octree, plotly]);
 
   return (
     <div
